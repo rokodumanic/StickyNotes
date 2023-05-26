@@ -4,9 +4,7 @@ import Note from "./Note";
 import PopUp from "./PopUp";
 import notes from "../notes";
 import { useState } from "react";
-import axios from "axios";
-import isEmpty from "./isEmpty";
-import OBJtoXML from "./objToXml";
+
 
 function App(){
     const [addNote, setAddNote]=useState(false);
