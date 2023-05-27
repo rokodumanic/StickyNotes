@@ -5,7 +5,7 @@ import Form from "react-bootstrap/Form";
 import uploadIcon from "./upload.png";
 
 
-function Header({openPop, uploadNote, parseNotes}) {
+function Header({openPop, uploadNote, parseNotes, saveNotes}) {
 
   const inputFile = useRef(null);
 
@@ -32,7 +32,7 @@ function Header({openPop, uploadNote, parseNotes}) {
     <Button 
       className="importBtn1 addBtn headerButton align-item-center justify-content-center d-flex" 
       onClick={handleFileInputClick} 
-      dataBsToggle="modal" 
+      databstoggle="modal" 
       variant="light" 
       >
     <img src={uploadIcon} className="icon"></img>
@@ -40,14 +40,20 @@ function Header({openPop, uploadNote, parseNotes}) {
     <Button 
       className="importBtn2 addBtn headerButton align-item-center justify-content-center d-flex" 
       onClick={parseNotes} 
-      dataBsToggle="modal" 
+      databstoggle="modal" 
       variant="light" 
       style={{fontSize: "1rem", width:"4rem"}}
-      >Submit
+      >Upload
     </Button>
     </div>
     <div className="col-1 align-self-center">
-    <Button className="addBtn headerButton rounded-circle align-item-center justify-content-center d-flex" onClick={handlePlusClick} dataBsToggle="modal" variant="light" style={{fontSize: "2rem", paddingBottom:"0.6rem"}}>+</Button>
+    <Button className="headerButton align-item-center justify-content-center d-flex" 
+      onClick={saveNotes}
+      variant="light"
+      >Save Notes</Button>
+    </div>
+    <div className="col-1 align-self-center">
+    <Button className="addBtn headerButton rounded-circle align-item-center justify-content-center d-flex" onClick={handlePlusClick} databstoggle="modal" variant="light" style={{fontSize: "2rem", paddingBottom:"0.6rem"}}>+</Button>
     </div>
     <div className="modal">
    <div className="modal_content">

@@ -4,6 +4,7 @@ import Note from "./Note";
 import PopUp from "./PopUp";
 import notes from "../notes";
 import { useState } from "react";
+import axios from "axios";
 
 
 function App(){
@@ -40,7 +41,6 @@ function App(){
         reader.readAsText(file);
       }
 
-
     function parseNotes(){
       var notesArr = [];
       var parser = new DOMParser();
@@ -61,10 +61,21 @@ function App(){
       console.log("notesArr",notesArr);
     }
 
+    async function saveNotes(){
+      await axios.post('http://localhost:5000/save', { 
+        data: fileObj
+      })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+    }
 
     return(
     <div>
-        <Header openPop={openPop} uploadNote={handleFileSelect} parseNotes={parseNotes}/>
+        <Header openPop={openPop} uploadNote={handleFileSelect} parseNotes={parseNotes} saveNotes={saveNotes}/>
             {fileObj.length ? fileObj.map((eachNote) => <Note
             key={eachNote.key}
             title={eachNote.title}

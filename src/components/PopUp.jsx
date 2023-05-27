@@ -13,9 +13,16 @@ function Example({open, close, newNote}) {
     close();
     };
 
-  const saveNote=()=>{
-    newNote({title:noteTitle, content:noteContents});
-    console.log("submitted");
+  const handleContent = (e) => {
+    setNoteContents(e.target.value)
+    console.log(noteContents);
+  }
+
+  const handleSubmit = (e) => {
+    if(noteTitle!=="" || noteContents!==""){
+      saveNote();
+    }
+    handleClose();
   }
 
   const handleTitle = (e) => {
@@ -23,9 +30,9 @@ function Example({open, close, newNote}) {
     console.log(noteTitle);
   }
 
-  const handleContent = (e) => {
-    setNoteContents(e.target.value)
-    console.log(noteContents);
+  const saveNote=()=>{
+    newNote({title:noteTitle, content:noteContents});
+    console.log("submitted");
   }
 
   useEffect (() => {
@@ -66,7 +73,7 @@ function Example({open, close, newNote}) {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={saveNote}>
+          <Button variant="primary" onClick={handleSubmit}>
             Save Changes
           </Button>
         </Modal.Footer>
