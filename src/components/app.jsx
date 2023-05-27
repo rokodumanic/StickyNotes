@@ -1,4 +1,4 @@
-import Header from "./Header";
+import Header from "./header/Header";
 import Footer from "./Footer";
 import Note from "./Note";
 import PopUp from "./PopUp";
@@ -26,18 +26,12 @@ function App(){
 
     function handleFileSelect(event){
         const file = event.target.files[0];
-        console.log("event.target.files[0]",event.target.files[0])
         const reader = new FileReader();
-        var pom = "";
-        console.log("TYPE", typeof fileContent);
-        console.log("AAAAAAAAAAAAAAAaa",file);
 
         reader.onload = function(event) {
            setFileContent(event.target.result);
-           pom=(event.target.result);
         };
 
-    
         reader.readAsText(file);
       }
 
